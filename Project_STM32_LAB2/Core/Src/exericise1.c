@@ -20,15 +20,15 @@ uint16_t led7SEG_Pins[7] = {
 };
 
 bool numLed7SEG[10][7] = {{0,0,0,0,0,0,1},
-						 {1,0,0,1,1,1,1},
-						 {0,0,1,0,0,1,0},
-						 {0,0,0,0,1,1,0},
-						 {1,0,0,1,1,0,0},
-						 {0,1,0,0,1,0,0},
-						 {0,1,0,0,0,0,0},
-						 {0,0,0,1,1,1,1},
-						 {0,0,0,0,0,0,0},
-						 {0,0,0,0,1,0,0}
+						  {1,0,0,1,1,1,1},
+						  {0,0,1,0,0,1,0},
+						  {0,0,0,0,1,1,0},
+						  {1,0,0,1,1,0,0},
+						  {0,1,0,0,1,0,0},
+						  {0,1,0,0,0,0,0},
+						  {0,0,0,1,1,1,1},
+						  {0,0,0,0,0,0,0},
+						  {0,0,0,0,1,0,0}
 						};
 
 void display7SEG(int num){
@@ -37,6 +37,7 @@ void display7SEG(int num){
 		HAL_GPIO_WritePin(led7SEG_GPIO_Ports[i], led7SEG_Pins[i], numLed7SEG[num][i]);
 	}
 }
+
 void initExercise1(){
 	HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, 1);
 	HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, 1);
@@ -46,7 +47,10 @@ void initExercise1(){
 
 const int MAX_LED; // exercise3
 int index_led = 0;
-int led_buffer[4] = {1, 2, 3, 4};
+int led_buffer[4] = { 1, 2, 3, 4};
+int hour = 0;
+int minute = 0;
+int second = 0;
 
 void update7SEG(int index){
 	switch (index){
@@ -76,6 +80,13 @@ void update7SEG(int index){
 		default:
 			break;
 	}
+}
+
+void updateClockBuffer(){
+	led_buffer[0] = hour/10;
+	led_buffer[1] = hour%10;
+	led_buffer[2] = minute/10;
+	led_buffer[3] = minute%10;
 }
 
 void runExercise1(){

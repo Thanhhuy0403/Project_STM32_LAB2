@@ -97,10 +97,26 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   initExercise1();
+  hour = 15;
+  minute = 8;
+  second = 50;
   setTimer(0, 100);
   setTimer(1, 100);
   while (1)
   {
+	  if(second >= 60){
+		  second = 0;
+		  minute++;
+	  }
+	  if(minute >= 60){
+		  minute = 0;
+		  hour++;
+	  }
+	  if(hour >= 24){
+		  hour = 0;
+	  }
+	  updateClockBuffer();
+	  second++;
 	  if(timer_flag[0] == 1){
 		  setTimer(0, 100);
 		  HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
@@ -110,6 +126,7 @@ int main(void)
 		  setTimer(1, 100);
 		  runExercise1();
 	  }
+	  HAL_Delay(1000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

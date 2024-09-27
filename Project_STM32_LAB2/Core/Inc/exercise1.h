@@ -9,9 +9,13 @@
 #define INC_EXERCISE1_H_
 
 extern int index_led;
+extern int hour;
+extern int minute;
+extern int second;
 
 void display7SEG(int num);
 void update7SEG(int index);
+void updateClockBuffer();
 
 void initExercise1();
 void runExercise1();
