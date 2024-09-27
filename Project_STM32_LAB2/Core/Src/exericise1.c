@@ -40,6 +40,7 @@ void display7SEG(int num){
 void initExercise1(){
 	HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, 1);
 	HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, 1);
+<<<<<<< HEAD
 }
 
 static bool status_led = true; // true -> led1 on, false -> led2 on (7SEG)
@@ -54,4 +55,39 @@ void runExercise1(){
 		display7SEG(2);
 	}
 	status_led = !status_led;
+=======
+	HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, 1);
+	HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, 1);
+}
+
+static int status_led = 1; // exercise2
+
+void runExercise1(){
+	if(status_led > 4){
+		status_led = 1;
+	}
+	switch (status_led){
+		case 1:
+			display7SEG(1);
+			HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, 0);
+			HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, 1);
+			break;
+		case 2:
+			display7SEG(2);
+			HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, 0);
+			HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, 1);
+			break;
+		case 3:
+			display7SEG(3);
+			HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, 0);
+			HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, 1);
+			break;
+		default:
+			display7SEG(0);
+			HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, 0);
+			HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, 1);
+			break;
+	}
+	status_led++;
+>>>>>>> exercise2
 }
