@@ -98,7 +98,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   initExercise1();
   setTimer(0, 100);
-  setTimer(1, 50);
+  setTimer(1, 100);
   while (1)
   {
 	  if(timer_flag[0] == 1){
@@ -107,7 +107,7 @@ int main(void)
 		  HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
 	  }
 	  if(timer_flag[1] == 1){
-		  setTimer(1, 50);
+		  setTimer(1, 100);
 		  runExercise1();
 	  }
     /* USER CODE END WHILE */

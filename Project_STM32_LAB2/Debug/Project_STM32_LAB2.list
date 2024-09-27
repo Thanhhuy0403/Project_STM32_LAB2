@@ -359,8 +359,8 @@ int main(void)
  800030e:	2164      	movs	r1, #100	; 0x64
  8000310:	2000      	movs	r0, #0
  8000312:	f000 f911 	bl	8000538 <setTimer>
-  setTimer(1, 50);
- 8000316:	2132      	movs	r1, #50	; 0x32
+  setTimer(1, 100);
+ 8000316:	2164      	movs	r1, #100	; 0x64
  8000318:	2001      	movs	r0, #1
  800031a:	f000 f90d 	bl	8000538 <setTimer>
   while (1)
@@ -388,8 +388,8 @@ int main(void)
  8000340:	785b      	ldrb	r3, [r3, #1]
  8000342:	2b00      	cmp	r3, #0
  8000344:	d0eb      	beq.n	800031e <main+0x2e>
-		  setTimer(1, 50);
- 8000346:	2132      	movs	r1, #50	; 0x32
+		  setTimer(1, 100);
+ 8000346:	2164      	movs	r1, #100	; 0x64
  8000348:	2001      	movs	r0, #1
  800034a:	f000 f8f5 	bl	8000538 <setTimer>
 		  runExercise1();
