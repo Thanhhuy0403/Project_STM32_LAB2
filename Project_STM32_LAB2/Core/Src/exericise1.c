@@ -37,8 +37,12 @@ void display7SEG(int num){
 		HAL_GPIO_WritePin(led7SEG_GPIO_Ports[i], led7SEG_Pins[i], numLed7SEG[num][i]);
 	}
 }
+void initExercise1(){
+	HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, 1);
+	HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, 1);
+}
 
-bool status_led = true; // true -> led1 on, false -> led2 on (7SEG)
+static bool status_led = true; // true -> led1 on, false -> led2 on (7SEG)
 void runExercise1(){
 	if(status_led){
 		HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, 0);

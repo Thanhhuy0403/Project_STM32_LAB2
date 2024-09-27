@@ -9,6 +9,7 @@
 #define INC_EXERCISE1_H_
 
 void display7SEG(int num);
+void initExercise1();
 void runExercise1();
 
 #endif /* INC_EXERCISE1_H_ */
