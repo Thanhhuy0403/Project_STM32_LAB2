@@ -9,6 +9,7 @@
 #define INC_SOFTWEAR_TIMER_H_
 
 extern int timer_counter[10];
+extern int TIMER_CYCLE;
 
 void setTimer(int index, int duration);
 void runTimer();

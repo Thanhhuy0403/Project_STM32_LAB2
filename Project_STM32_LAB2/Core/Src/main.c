@@ -100,8 +100,8 @@ int main(void)
   hour = 15;
   minute = 8;
   second = 50;
-  setTimer(0, 100);
-  setTimer(1, 100);
+  setTimer(0, 1000);
+  setTimer(1, 1000);
   while (1)
   {
 	  if(second >= 60){
@@ -118,12 +118,12 @@ int main(void)
 	  updateClockBuffer();
 	  second++;
 	  if(timer_flag[0] == 1){
-		  setTimer(0, 100);
+		  setTimer(0, 1000);
 		  HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
 		  HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
 	  }
 	  if(timer_flag[1] == 1){
-		  setTimer(1, 100);
+		  setTimer(1, 1000);
 		  runExercise1();
 	  }
 	  HAL_Delay(1000);
