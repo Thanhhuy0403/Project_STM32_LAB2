@@ -1,5 +1,6 @@
 exericise1.c:34:6:display7SEG	32	static
 exericise1.c:41:6:initExercise1	8	static
-exericise1.c:55:6:update7SEG	16	static
-exericise1.c:85:6:updateClockBuffer	4	static
-exericise1.c:92:6:runExercise1	8	static
+exericise1.c:55:6:updateClockBuffer	4	static
+exericise1.c:62:6:handleTime	8	static
+exericise1.c:78:6:update7SEG	16	static
+exericise1.c:108:6:runExercise1	8	static

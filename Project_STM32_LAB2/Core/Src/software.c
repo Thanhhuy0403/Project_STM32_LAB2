@@ -30,4 +30,11 @@ void runTimer(){
 			timer_flag[1] = 1;
 		}
 	}
+
+	if(timer_counter[2] > 0){
+		timer_counter[2]--;
+		if(timer_counter[2] <= 0){
+			timer_flag[2] = 1;
+		}
+	}
 }

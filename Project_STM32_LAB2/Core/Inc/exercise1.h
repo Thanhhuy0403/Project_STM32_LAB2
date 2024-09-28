@@ -16,6 +16,7 @@ extern int second;
 void display7SEG(int num);
 void update7SEG(int index);
 void updateClockBuffer();
+void handleTime();
 
 void initExercise1();
 void runExercise1();

@@ -101,32 +101,23 @@ int main(void)
   minute = 8;
   second = 50;
   setTimer(0, 1000);
-  setTimer(1, 1000);
+  setTimer(1, 500); // display Clock
+  setTimer(2, 1000); // update Clock Buffer
   while (1)
   {
-	  if(second >= 60){
-		  second = 0;
-		  minute++;
+	  if(timer_flag[2] == 1){
+		  setTimer(2, 1000);
+		  handleTime();
 	  }
-	  if(minute >= 60){
-		  minute = 0;
-		  hour++;
-	  }
-	  if(hour >= 24){
-		  hour = 0;
-	  }
-	  updateClockBuffer();
-	  second++;
 	  if(timer_flag[0] == 1){
 		  setTimer(0, 1000);
 		  HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
 		  HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
 	  }
 	  if(timer_flag[1] == 1){
-		  setTimer(1, 1000);
+		  setTimer(1, 500);
 		  runExercise1();
 	  }
-	  HAL_Delay(1000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

@@ -52,6 +52,29 @@ int hour = 0;
 int minute = 0;
 int second = 0;
 
+void updateClockBuffer(){
+	led_buffer[0] = hour/10;
+	led_buffer[1] = hour%10;
+	led_buffer[2] = minute/10;
+	led_buffer[3] = minute%10;
+}
+
+void handleTime(){
+	second++;
+	if(second >= 60){
+	    second = 0;
+	    minute++;
+	}
+	if(minute >= 60){
+	    minute = 0;
+	    hour++;
+	}
+	if(hour >= 24){
+	    hour = 0;
+	}
+	updateClockBuffer();
+}
+
 void update7SEG(int index){
 	switch (index){
 		case 0:
@@ -80,13 +103,6 @@ void update7SEG(int index){
 		default:
 			break;
 	}
-}
-
-void updateClockBuffer(){
-	led_buffer[0] = hour/10;
-	led_buffer[1] = hour%10;
-	led_buffer[2] = minute/10;
-	led_buffer[3] = minute%10;
 }
 
 void runExercise1(){
