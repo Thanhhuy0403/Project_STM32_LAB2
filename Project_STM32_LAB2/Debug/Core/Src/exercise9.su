@@ -1,0 +1,3 @@
+exercise9.c:34:6:initExercise9	16	static
+exercise9.c:41:6:updateLEDMatrix	56	static
+exercise9.c:108:6:runExercise9	8	static
