@@ -95,8 +95,8 @@ void updateLEDMatrix(int index){
 		case 7:
 			HAL_GPIO_WritePin(ledMatrixRow_Ports[6], ledMatrixRow_Pins[6], GPIO_PIN_SET);
 			for (int j = 0; j < 8; j++) {
-				HAL_GPIO_WritePin(ledMatrixCol_Ports[j], ledMatrixCol_Pins[j], (matrix_buffer[index] & 0x80) ? GPIO_PIN_RESET : GPIO_PIN_SET);
-				matrix_buffer[index] <<= 1;
+				HAL_GPIO_WritePin(ledMatrixCol_Ports[j], ledMatrixCol_Pins[j], (byte & 0x80) ? GPIO_PIN_RESET : GPIO_PIN_SET);
+				byte <<= 1;
 			}
 			break;
 		default:
@@ -106,7 +106,7 @@ void updateLEDMatrix(int index){
 }
 
 void runExercise9() {
-	if(index_led_matrix >= MAX_LED_MATRIX){
+	if(index_led_matrix >= 8){
 		index_led_matrix = 0;
 	}
 	updateLEDMatrix(index_led_matrix++);
