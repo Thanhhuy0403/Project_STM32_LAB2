@@ -38,6 +38,19 @@ void initExercise9(){
 	}
 }
 
+void shiftMatrixBufferRight() {
+	for (int i = 0; i < 8; i++) {
+		// Lưu trữ bit phải nhất
+		uint8_t right_most_bit = matrix_buffer[i] & 0x01;
+		// Dịch các bit sang phải
+		matrix_buffer[i] >>= 1;
+		// Đặt bit lưu trữ lên vị trí trái nhất
+		if (right_most_bit) {
+			matrix_buffer[i] |= 0x80; // Set bit trái nhất (MSB) nếu cần
+		}
+	}
+}
+
 void updateLEDMatrix(int index){
 
 	uint8_t byte = matrix_buffer[index];
@@ -109,5 +122,6 @@ void runExercise9() {
 	if(index_led_matrix >= MAX_LED_MATRIX){
 		index_led_matrix = 0;
 	}
+	shiftMatrixBufferRight();
 	updateLEDMatrix(index_led_matrix++);
 }

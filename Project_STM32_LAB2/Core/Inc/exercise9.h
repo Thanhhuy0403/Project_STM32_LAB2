@@ -9,6 +9,7 @@
 #define INC_EXERCISE9_H_
 
 void updateLEDMatrix(int index);
+void shiftMatrixBufferRight();
 void initExercise9();
 void runExercise9();
 
