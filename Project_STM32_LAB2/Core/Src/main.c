@@ -105,7 +105,8 @@ int main(void)
   setTimer(0, 1000);
   setTimer(1, 200); // display Clock
   setTimer(2, 1000); // update Clock Buffer
-  setTimer(3, 100); // display ledMatrix
+  setTimer(3, 10); // display ledMatrix
+  setTimer(4, 200); // transition animation time
   while (1)
   {
 	  if(timer_flag[0]){
@@ -122,8 +123,12 @@ int main(void)
 		  handleTime();
 	  }
 	  if(timer_flag[3]){
-		  setTimer(3, 100);
+		  setTimer(3, 10);
 		  runExercise9();
+	  }
+	  if(timer_flag[4]){
+		  setTimer(4, 200);
+		  circularShiftRight(matrix_buffer, sizeof(matrix_buffer) / sizeof(matrix_buffer[0]), 1);
 	  }
 
     /* USER CODE END WHILE */

@@ -1,4 +1,4 @@
-exercise9.c:34:6:initExercise9	16	static
-exercise9.c:41:6:shiftMatrixBufferRight	16	static
-exercise9.c:54:6:updateLEDMatrix	56	static
-exercise9.c:121:6:runExercise9	8	static
+exercise9.c:34:6:circularShiftRight	32	static
+exercise9.c:43:6:initExercise9	16	static
+exercise9.c:50:6:updateLEDMatrix	56	static
+exercise9.c:117:6:runExercise9	8	static

@@ -44,4 +44,11 @@ void runTimer(){
 			timer_flag[3] = 1;
 		}
 	}
+
+	if(timer_counter[4] > 0){
+		timer_counter[4]--;
+		if(timer_counter[4] <= 0){
+			timer_flag[4] = 1;
+		}
+	}
 }

@@ -31,23 +31,19 @@ const int MAX_LED_MATRIX = 8;
 int index_led_matrix = 0;
 uint8_t matrix_buffer [8] = {0x18, 0x24, 0x42, 0x42, 0x7E, 0x42, 0x42, 0x42};
 
+void circularShiftRight(uint8_t* buffer, size_t size, uint8_t shift) {
+    shift %= 8;
+    if (shift == 0) return;
+
+    for (size_t i = 0; i < size; i++) {
+        buffer[i] = (buffer[i] >> shift) | (buffer[i] << (8 - shift));
+    }
+}
+
 void initExercise9(){
 	for(int i = 0; i < 8; i++){
 		HAL_GPIO_WritePin(ledMatrixCol_Ports[i], ledMatrixCol_Pins[i], 1);
 		HAL_GPIO_WritePin(ledMatrixRow_Ports[i], ledMatrixRow_Pins[i], 1);
-	}
-}
-
-void shiftMatrixBufferRight() {
-	for (int i = 0; i < 8; i++) {
-		// Lưu trữ bit phải nhất
-		uint8_t right_most_bit = matrix_buffer[i] & 0x01;
-		// Dịch các bit sang phải
-		matrix_buffer[i] >>= 1;
-		// Đặt bit lưu trữ lên vị trí trái nhất
-		if (right_most_bit) {
-			matrix_buffer[i] |= 0x80; // Set bit trái nhất (MSB) nếu cần
-		}
 	}
 }
 
@@ -108,8 +104,8 @@ void updateLEDMatrix(int index){
 		case 7:
 			HAL_GPIO_WritePin(ledMatrixRow_Ports[6], ledMatrixRow_Pins[6], GPIO_PIN_SET);
 			for (int j = 0; j < 8; j++) {
-				HAL_GPIO_WritePin(ledMatrixCol_Ports[j], ledMatrixCol_Pins[j], (matrix_buffer[index] & 0x80) ? GPIO_PIN_RESET : GPIO_PIN_SET);
-				matrix_buffer[index] <<= 1;
+				HAL_GPIO_WritePin(ledMatrixCol_Ports[j], ledMatrixCol_Pins[j], (byte & 0x80) ? GPIO_PIN_RESET : GPIO_PIN_SET);
+				byte <<= 1;
 			}
 			break;
 		default:
@@ -122,6 +118,5 @@ void runExercise9() {
 	if(index_led_matrix >= MAX_LED_MATRIX){
 		index_led_matrix = 0;
 	}
-	shiftMatrixBufferRight();
 	updateLEDMatrix(index_led_matrix++);
 }
